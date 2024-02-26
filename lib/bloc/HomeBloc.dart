@@ -3,34 +3,24 @@ import 'package:bussinuslogic/bloc/HomeState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  HomeBloc()
-      : super(
-          InitStateNumber(12),
-        ) {
-    int counter = 12;
-
-    on<IncrementNumber>(
+  int counter = 12;
+  HomeBloc() : super(InitState(12)) {
+    on<IncrementEvent>(
       (event, emit) {
-        emit(
-          UpdatedCounterState(++counter),
-        );
+        emit(UpdateCounterState(++counter));
       },
     );
 
-    on<DecrementNumber>(
+    on<DecrementEvent>(
       (event, emit) {
-        emit(
-          UpdatedCounterState(--counter),
-        );
+        emit(UpdateCounterState(--counter));
       },
     );
 
-    on<RestNumber>(
+    on<ResetEvent>(
       (event, emit) {
         counter = 0;
-        emit(
-          RestNumberState(counter),
-        );
+        emit(RestCounterState(counter));
       },
     );
   }

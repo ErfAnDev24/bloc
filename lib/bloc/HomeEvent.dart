@@ -1,7 +1,7 @@
 class HomeEvent {}
 
-class IncrementNumber extends HomeEvent {}
+class IncrementEvent extends HomeEvent {}
 
-class DecrementNumber extends HomeEvent {}
+class DecrementEvent extends HomeEvent {}
 
-class RestNumber extends HomeEvent {}
+class ResetEvent extends HomeEvent {}

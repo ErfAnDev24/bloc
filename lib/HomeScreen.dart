@@ -15,59 +15,54 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
+      body: Center(
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              if (state is InitState) {
+                return Text('${state.counter}');
+              }
+
+              if (state is UpdateCounterState) {
+                return Text('${state.counter}');
+              }
+
+              if (state is RestCounterState) {
+                return Text('${state.counter}');
+              }
+              return Text('error');
+            },
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
-                if (state is InitStateNumber) {
-                  return Text('${state.counter}');
-                }
-                if (state is UpdatedCounterState) {
-                  return Text('${state.counter}');
-                }
-                ;
-
-                ;
-
-                if (state is RestNumberState) {
-                  return Text('${state.counter}');
-                }
-                ;
-
-                return Text('error');
-              })),
-              Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<HomeBloc>().add(
-                            IncrementNumber(),
-                          );
-                    },
-                    child: Text('increment'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<HomeBloc>().add(
-                            DecrementNumber(),
-                          );
-                    },
-                    child: Text('decrement'),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      context.read<HomeBloc>().add(
-                            RestNumber(),
-                          );
-                    },
-                    child: Text('rest'),
-                  ),
-                ],
-              )
+              ElevatedButton(
+                onPressed: () {
+                  context.read<HomeBloc>().add(IncrementEvent());
+                },
+                child: Text('increment'),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<HomeBloc>().add(DecrementEvent());
+                },
+                child: Text('decrement'),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<HomeBloc>().add(ResetEvent());
+                },
+                child: Text('rest'),
+              ),
             ],
           ),
-        ),
+        ]),
       ),
     );
   }

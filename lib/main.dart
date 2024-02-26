@@ -13,11 +13,10 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: BlocProvider(
-      create: (context) {
-        return HomeBloc();
-      },
-      child: HomeScreen(),
-    ));
+          create: (context) => HomeBloc(),
+          child: HomeScreen(),
+        ));
   }
 }

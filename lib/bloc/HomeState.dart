@@ -1,16 +1,16 @@
 class HomeState {}
 
-class InitStateNumber extends HomeState {
-  int? counter;
-  InitStateNumber(this.counter);
+class InitState extends HomeState {
+  int counter;
+  InitState(this.counter);
 }
 
-class UpdatedCounterState extends HomeState {
-  int? counter;
-  UpdatedCounterState(this.counter);
+class UpdateCounterState extends HomeState {
+  int counter;
+  UpdateCounterState(this.counter);
 }
 
-class RestNumberState extends HomeState {
-  int? counter;
-  RestNumberState(this.counter);
+class RestCounterState extends HomeState {
+  int counter;
+  RestCounterState(this.counter);
 }
